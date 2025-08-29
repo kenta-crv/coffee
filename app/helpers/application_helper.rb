@@ -2,8 +2,8 @@ module ApplicationHelper
   def default_meta_tags
     {
       site: "",
-      title:"<%= yield(:title) | 『エクステリアガーデン』' %>",
-      description: "外構・エクステリア工事の一括比較見積り『エクステリアガーデン』。",
+      title:"<%= yield(:title) | 『オフィスコーヒー』' %>",
+      description: "オフィスで手軽にコーヒーマシン設置なら『オフィスコーヒー』。",
       charset: "UTF-8",
       reverse: true,
       separator: '|',
