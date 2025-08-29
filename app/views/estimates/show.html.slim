@@ -12,76 +12,80 @@ table.company
     col width="10%"
     col width="20%"
     col width="70%"
+
   tr
     td
       strong.label.label-blue.point
         | Point
         span.word 個人でフルネーム登録をされている場合、開示前に情報の公開を行うことになりますので、苗字のみに変更します。また、法人やマンション名がある場合、それに切り替えます。
     td.arrow_box
+      | 会社名
+    td
+      = @estimate.co
+
+  tr
+    td
+    td.arrow_box
       | 担当者名
     td
       = @estimate.name
+
   tr
     td
     td.arrow_box
       | 携帯番号
     td
       = @estimate.tel
+
   tr
     td
     td.arrow_box
-      | 施工先住所
+      | 設置先住所
     td
       = @estimate.address
+
   tr
     td
     td.arrow_box
       | メールアドレス
     td
       = @estimate.email
+
   tr
     td
     td.arrow_box
-      | 施工内容
+      | 希望の機種
     td
       = @estimate.which_one
+
   tr
     td
     td.arrow_box
-      | 屋外平米数
+      | 従業員数
     td
-      = @estimate.square_meter
-      | m2
+      = @estimate.people
+
   tr
     td
     td.arrow_box
-      | 他社で見積り・図面を取得済み？
+      | 1日何杯ほどの消費を想定していますか？
     td
       = @estimate.bring
+
   tr
     td
     td.arrow_box
-      | 施工決定の重要点
-    td
-      = @estimate.importance
-  tr
-    td
-    td.arrow_box
-      | 希望施工予定月
-    td
-      = @estimate.schedule
-  tr
-    td
-    td.arrow_box
-      | 業者決定希望時期
+      | いつまでに設置したいですか？
     td
       = @estimate.period
+
   tr
     td
     td.arrow_box
-      | 要望・備考
+      | その他ご要望
     td
-      = @estimate.remarks
+      = simple_format(@estimate.remarks)
+
 
 h2.headline  
   | 調査進捗　

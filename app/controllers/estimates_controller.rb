@@ -197,18 +197,15 @@ class EstimatesController < ApplicationController
   def estimate_params
     params.require(:estimate).permit(
       :co, #会社名
-      :name,  #名前
-      :tel, #電話番号
-      :postnumber, #郵便番号
-      :address, #施工先住所
+      :name,  #担当社名
+      :tel, #携帯番号
+      :address, #設置先住所
       :email, #メールアドレス
-      :which_one, #新築or改築
-      :square_meter, #平米
-      :schedule, #施工予定月
-      :bring, #既に他社で見積もりや図面を取得しているか？
-      :importance, #施工決定における重要点
-      :period, #いつまでに決めたいか
-      :remarks, #要望
+      :which_one, #希望の機種
+      :bring, #1日何杯ほどの消費を想定していますか？
+      :people, #従業員数
+      :period, #いつまでに設置したいか
+      :remarks, #その他ご要望
     )
   end
 end

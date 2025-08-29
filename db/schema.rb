@@ -242,20 +242,13 @@ ActiveRecord::Schema.define(version: 2025_06_30_074323) do
     t.string "co"
     t.string "name"
     t.string "tel"
-    t.string "postnumber"
     t.string "address"
     t.string "email"
     t.string "which_one"
-    t.string "square_meter"
-    t.string "schedule"
+    t.string "people"
     t.string "bring"
-    t.string "importance"
     t.string "period"
     t.string "remarks"
-    t.integer "user_id"
-    t.boolean "send_mail_flag", default: false
-    t.boolean "disclosed"
-    t.boolean "accepted_by_client"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

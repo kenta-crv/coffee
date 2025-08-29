@@ -1,10 +1,10 @@
 class EstimateMailer < ActionMailer::Base
   include Rails.application.routes.url_helpers
-  default from: "info@exterior-garden.jp"
+  default from: "coffee@factoru.jp"
   def received_email(estimate)
     @estimate = estimate
-    mail to: "info@exterior-garden.jp"
-    mail(subject: 'エクステリアガーデンにお見積もり依頼がありました') do |format|
+    mail to: "coffee@factoru.jp"
+    mail(subject: 'オフィスコーヒーにお見積もり依頼がありました') do |format|
       format.text
     end
   end
@@ -12,7 +12,7 @@ class EstimateMailer < ActionMailer::Base
   def send_email(estimate)
     @estimate = estimate
     mail to: estimate.email
-    mail(subject: '現地調査・見積制作開始のご案内') do |format|
+    mail(subject: 'オフィスコーヒーに見積依頼いただきありがとうございます。') do |format|
       format.text
     end
   end
@@ -37,7 +37,7 @@ class EstimateMailer < ActionMailer::Base
 
   def status_update_email(comment)
     @comment = comment
-    mail(to: 'info@exterior-garden.jp', from: comment.client.email, subject: 'ステータス更新通知')
+    mail(to: 'coffee@factoru.jp', from: comment.client.email, subject: 'ステータス更新通知')
   end
 
 # app/mailers/estimate_mailer.rb
@@ -53,7 +53,7 @@ end
     @estimate = estimate
     @client = client
     @client_comment = client_comment
-    mail(from: @client.email, to: 'info@exterior-garden.jp', subject: "#{client.company}が案件を受託しました。")
+    mail(from: @client.email, to: 'coffee@factoru.jp', subject: "#{client.company}が案件を受託しました。")
   end
 
   def net_decline_email(estimate, client, client_comment)
@@ -89,7 +89,7 @@ end
     @estimate = estimate
     @comment = comment
     @client = client
-    mail(to: "info@exterior-garden.jp", from: client.email, subject: '【#{@estimate.co}】#{@client.company}が提案を行いました')
+    mail(to: "coffee@factoru.jp", from: client.email, subject: '【#{@estimate.co}】#{@client.company}が提案を行いました')
   end
 
   # ステータスが依頼中の場合の催促メール送信
@@ -117,7 +117,7 @@ end
     @comment = comment
     @estimate = comment.estimate
     @client = client
-    mail(to: "info@exterior-garden.jp", subject: "#{@client.company}より#{@estimate.co}の提案がありました。")
+    mail(to: "coffee@factoru.jp", subject: "#{@client.company}より#{@estimate.co}の提案がありました。")
   end
 
   # ステータスが契約となった場合の通知メール送信

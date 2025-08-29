@@ -1,4 +1,4 @@
-=  form_for @estimate, url: thanks_estimates_path(@estimate) do |f|
+= form_for @estimate, url: thanks_estimates_path(@estimate) do |f|
   br
   br
   .tops-wrapper
@@ -10,15 +10,25 @@
         col.col-1
         col.col-2
         col.col-3
+
       tr
         td.label-cell
           strong.label 必須
         td.arrow-box-cell
-          | お名前
+          | 会社名
+        td.responsive-cell
+          = f.hidden_field :co
+          = @estimate.co
+
+      tr
+        td.label-cell
+          strong.label 必須
+        td.arrow-box-cell
+          | 担当者名
         td.responsive-cell
           = f.hidden_field :name
           = @estimate.name
-  
+
       tr
         td.label-cell
           strong.label 必須
@@ -27,16 +37,16 @@
         td.responsive-cell
           = f.hidden_field :tel
           = @estimate.tel
-  
+
       tr
         td.label-cell
           strong.label 必須
         td.arrow-box-cell
-          | 施工先住所
+          | 設置先住所
         td.responsive-cell
           = f.hidden_field :address
           = @estimate.address
-  
+
       tr
         td.label-cell
           strong.label 必須
@@ -45,72 +55,53 @@
         td.responsive-cell
           = f.hidden_field :email
           = @estimate.email
-  
+
       tr
         td.label-cell
           strong.label 必須
         td.arrow-box-cell
-          | 施工内容
+          | 希望の機種
         td.responsive-cell
           = f.hidden_field :which_one
           = @estimate.which_one
-  
-      tr
-        td.label-cell
-          strong.label.blue_label 任意
-        td.arrow-box-cell
-          | 屋外平米数
-        td.responsive-cell
-          = f.hidden_field :square_meter
-          = @estimate.square_meter
-          | m2
-  
+
       tr
         td.label-cell
           strong.label 必須
         td.arrow-box-cell
-          | 既に他社で見積りや図面を取得済みですか？
+          | 従業員数
+        td.responsive-cell
+          = f.hidden_field :people
+          = @estimate.people
+
+      tr
+        td.label-cell
+          strong.label 必須
+        td.arrow-box-cell
+          | 1日何杯ほどの消費を想定していますか？
         td.responsive-cell
           = f.hidden_field :bring
           = @estimate.bring
-  
+
       tr
         td.label-cell
           strong.label 必須
         td.arrow-box-cell
-          | 施工決定における重要点を教えてください。
-        td.responsive-cell
-          = f.hidden_field :importance
-          = @estimate.importance
-  
-      tr
-        td.label-cell
-          strong.label 必須
-        td.arrow-box-cell
-          | 希望施工予定月
-        td.responsive-cell
-          = f.hidden_field :schedule
-          = @estimate.schedule
-  
-      tr
-        td.label-cell
-          strong.label 必須
-        td.arrow-box-cell
-          | いつまでに業者を決定したいですか？
+          | いつまでに設置したいですか？
         td.responsive-cell
           = f.hidden_field :period
           = @estimate.period
-  
+
       tr
         td.label-cell
-          strong.label.label-blue 任意
+          strong.label 任意
         td.arrow-box-cell
-          | 要望・備考
+          | その他ご要望
         td.responsive-cell
           = f.hidden_field :remarks
           = simple_format(@estimate.remarks)
 
       tr
-        td colspan="3"
-         .center
-          = f.submit "送信", class: "btn btn-success"
+      td colspan="3"
+        .center
+          = f.submit "送信",class:"btn btn-brown"

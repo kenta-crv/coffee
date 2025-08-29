@@ -4,10 +4,13 @@ class Estimate < ApplicationRecord
   has_one :transfer, dependent: :destroy
   has_many :progresses, dependent: :destroy
   has_many :payments, dependent: :destroy
+  validates :co, presence: { message: '会社名が入力されていません。' }, on: :create
   validates :name, presence: { message: '名前が入力されていません。' }, on: :create
-  validates :tel, presence: { message: '電話番号が入力されていません。' }, on: :create
+  validates :tel, presence: { message: '携帯番号が入力されていません。' }, on: :create
   validates :email, presence: { message: 'メールアドレスが入力されていません。' }, on: :create
   validates :address, presence: { message: '住所が入力されていません。' }, on: :create
+  validates :people, presence: { message: '従業員数が入力されていません。' }, on: :create
+  validates :bring, presence: { message: '1日の予想消費杯数を記載してください。' }, on: :create
 
   has_many :client_comments, dependent: :destroy
   
