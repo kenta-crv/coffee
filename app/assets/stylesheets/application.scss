@@ -1061,43 +1061,42 @@ h4:before{
   align-items: flex-start;         // 文字・画像上詰め
   justify-content: flex-end;       // 全体右寄せ
   width: 100%;
-  height: 100vh;                   // 画面全体
+  height: 100vh;
   padding: 0;
   margin: 0;
   background: url('background.png') no-repeat top right;
-  background-size: contain;        // 画像比率を維持して表示
+  background-size: contain;
   position: relative;
 
   .contents {
     display: flex;
-    flex-direction: column;
-    align-items: flex-end;         // 内部右寄せ
+    flex-direction: column;        // 上から下に積む
+    align-items: flex-end;         // 右揃え
     justify-content: flex-start;
-    width: 100%;                   // 親幅いっぱい
-    padding: 60px 60px 0 0;       // ヘッダー下余白＋右余白
+    width: auto;                   // 幅制限を解除
+    max-width: none;               // 幅制限解除
+    padding: 60px 60px 0 0;
     box-sizing: border-box;
 
     .overlayer {
-      display: inline-block;       // 折り返し位置をブロック内に限定
+      display: inline-block;
       max-width: 600px;            // 文字幅制限
       font-size: 30px;
       font-weight: bold;
       color: #444;
       line-height: 2.5;
       margin-bottom: 20px;
-      text-align: right;           // 右揃え
-      word-break: break-word;      // 長文対応
+      text-align: center;
+      word-break: break-word;
     }
 
     .image-block {
-      display: inline-block;
-      text-align: right;           // 右揃え
-      margin-top: 20px;
-      
-      img {
-        max-width: 35%;
-        height: auto;
-      }
+      display: flex;               // 横並び
+      flex-direction: row;         // 横方向
+      align-items: center;         // 高さ揃え
+      justify-content: flex-start; // 文字幅に合わせて左から横並び
+      max-width: 600px;            // 文字幅に合わせる
+      margin-top: 20px;            // 文字下の余白
 
       .btn-brown {
         background-color: #8B4513;
@@ -1107,12 +1106,16 @@ h4:before{
         font-size: 16px;
         border-radius: 8px;
         text-decoration: none;
-        margin-top: 16px;
+        margin-right: 16px;       // ボタンと画像の間隔
 
         &:hover {
           background-color: #5a2e0d;
         }
+      }
 
+      img {
+        width: 250px !important;   // PCでも確実に大きく
+        height: auto !important;
       }
     }
   }
@@ -1186,6 +1189,7 @@ h4:before{
             max-width: none;
             height: auto;
           }
+          
         }
       }
     }
