@@ -1123,65 +1123,75 @@ h4:before{
     position: relative;
     width: 100%;
     background: url('mobile.png') no-repeat top center;
-    background-size: 115% auto; 
-    
-      &::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(255,255,255,0.5); /* 白半透明 */
-    pointer-events: none; /* ボタン操作を邪魔しない */
-  }
-
-
-    /* 背景のアスペクト比に応じて高さ確保 */
+    background-size: 115% auto;
     padding-top: 73.4%;  
-
-    /* 中身を背景上に重ねる */
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start; // 中央寄せを解除
     align-items: center;
-  }
 
-  .contents {
-    position: absolute;   /* 背景上に配置 */
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;  /* 背景の中で中央寄せ */
-    align-items: center;
-    padding: 20px;
-    text-align: center;
-
-    .overlayer {
-      max-width: 90%;
-      font-size: 24px!important;
-      line-height: 1.8;
-      font-weight: 600;
-      color: #333;
-      margin-bottom: 16px;
+    &::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(255,255,255,0.5);
+      pointer-events: none;
     }
 
-    .image-block {
+    .contents {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start; // 上寄せ
+      align-items: center;
+      padding: 20px;
+      margin-top:45px;
       text-align: center;
 
-      img {
-        max-width: 70%;
+      .overlayer {
+        max-width: 90%;
+        font-size: 19px!important;
+        line-height: 3.5!important;
+        font-weight: 600;
+        text-align:center;
+        color: #333;
+        margin-bottom: 16px;
       }
 
-      .btn-brown {
-        margin-top: 20px;
+      .image-block {
+        display: flex;
+        margin-top:50px;
+        flex-direction: column;
+        align-items: center;
+        z-index: 1;
+
+        .button-wrapper {
+          order: 2;  // ボタン下
+          margin-top: 16px;
+        }
+
+        .image-wrapper {
+          order: 1;  // 画像上
+          width: 100%;
+
+          img {
+            width: 100%;  // 幅100%
+            max-width: none;
+            height: auto;
+          }
+        }
       }
     }
   }
 }
+
 
 .plan-slider {
   display: flex;

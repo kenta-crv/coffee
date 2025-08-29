@@ -3,14 +3,16 @@
 .section.ai-wrapper
   .contents
     .overlayer
-      | いつでも手軽にオフィスでコーヒー
+      | オフィスで手軽にコーヒーを
       br/
-      | 福利厚生・収益型とニーズに合わせた対応
+      | 福利厚生・収益型と多彩な対応
       br/
-      | 月額無料の『オフィスコーヒー』
+      | 月額無料『オフィスコーヒー』
     .image-block
-         = link_to "無料で設置を申し込む", "/estimates/new", class:"btn btn-brown mt-3"
-         = image_tag "underground.webp", width:"100%"
+      .button-wrapper
+        = link_to "無料で設置を申し込む", "/estimates/new", class:"btn btn-brown mt-3"
+      .image-wrapper
+        = image_tag "underground.webp", width:"100%"
 
 .section.top-wrapper
  h2.heading
