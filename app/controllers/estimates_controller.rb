@@ -29,12 +29,19 @@ class EstimatesController < ApplicationController
     end
   end
 
-  def thanks
+def thanks
+  if params[:estimate] # フォームからの送信がある場合のみ保存
     @estimate = Estimate.new(estimate_params)
-    @estimate.save
-    EstimateMailer.received_email(@estimate).deliver # 管理者に通知
-    EstimateMailer.send_email(@estimate).deliver # 送信者に通知
+    if @estimate.save
+      EstimateMailer.received_email(@estimate).deliver # 管理者に通知
+      EstimateMailer.send_email(@estimate).deliver     # 送信者に通知
+    end
+  else
+    # 送信されなかった場合でも @estimate を空オブジェクトとして用意
+    @estimate = Estimate.new
   end
+end
+
 
   def contract
     @estimates = Estimate.joins(:comment).where.not(sales_price: nil).where("comments.cocacola = ? OR comments.asahi = ? OR comments.itoen = ? OR comments.dydo = ? OR comments.yamakyu = ? OR comments.neos = ?", "契約", "契約", "契約", "契約", "契約", "契約")

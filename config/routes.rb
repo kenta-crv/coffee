@@ -60,7 +60,7 @@ Rails.application.routes.draw do
     end
     collection do
       post :confirm
-      post :thanks
+      match :thanks, via: [:get, :post] 
     end
     member do
       post :send_mail_cfsl
