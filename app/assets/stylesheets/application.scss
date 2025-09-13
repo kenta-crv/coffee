@@ -14,7 +14,6 @@
  *= require_self
  */
 
-
  $main_color: #461710;
  $sub_color: #461710;
  $asort_color: #461710;
@@ -30,9 +29,11 @@ html, body {
 }
 
 .section {
-  height: 100vh;               // 各セクションを画面1枚分に
-  scroll-snap-align: start;    // セクションの先頭でピタッと止まる
+  height: 100vh;               /* 1画面分の高さは固定 */
+  overflow-y: auto;            /* セクション内で縦スクロール可能に */
+  scroll-snap-align: start;    /* スナップの基準 */
 }
+
  /*ヘッダーのベース設定*/
 header {
   background-color: white;
@@ -234,37 +235,40 @@ textarea {
 
                                                /*  Top Wrapper  */
 .top-wrapper {
-  position:relative;
-  text-align:center;
-                                    /*タイトル*/
-       .heading {
-           text-align:center;
-           color: #666;
-           line-height:36px;
-            }
-        h2 {
-            font-size:3vw;
-            font-weight:bold;
-            @media screen and ( max-width:479px ){font-size:2rem;}
-            }
-        p {
-            font-size:2vw;
-            }
-        strong {
-            color: $main_color;
-            font-size:125%;
-            @media screen and ( max-width:479px ){font-size:2.5rem;}
-            text-decoration: underline;
-            font-weight:bold;
-        }
-        h6 {
-            line-height:2.5em;
-            font-size:2.0vw;
-            margin:0 50px;
-            @media screen and ( max-width:479px ){
-              font-size:2.0rem;
-              margin:0 10px;}
-        }
+  position: relative;
+  text-align: center;
+
+  .heading {
+    text-align: center;
+    color: #666;        // グレー固定
+    font-size: 2rem;    // PC時は標準的なサイズ
+    font-weight: bold;
+    margin: 20px 0;
+  }
+
+  h2 {
+    font-size: 2rem;    // PC用
+    font-weight: bold;
+    color: #666;        // グレー固定
+    margin: 0;
+    @media screen and (max-width: 479px) {
+      font-size: 1.5rem;  // スマホ用
+    }
+  }
+
+  strong {
+    color: #666;        // グレー固定
+    font-weight: bold;
+    text-decoration: none; // 下線消し
+    font-size: inherit;    // h2に揃える
+  }
+
+  p, h6 {
+    color: #666;        // 全てグレー
+    font-size: 1rem;
+    margin: 10px 0;
+    line-height: 1.6;
+  }
 }
 
 /*hr*/
@@ -572,6 +576,32 @@ dd {
     padding: 0;
 }
 
+
+
+@media screen and (max-width: 768px) {
+  .cp_qa .cp_actab {
+    width: 100% !important; /* 横幅いっぱい */
+  }
+
+  .cp_qa .cp_actab label {
+    padding: 1em 3.5em 1em 1em !important; /* 左右余白を広めに */
+    font-size: 3.5vw !important; /* 少し小さめに調整 */
+    word-break: break-word; /* 長い文字を折り返す */
+    box-sizing: border-box; /* はみ出さないように */
+  }
+
+  .cp_qa .cp_actab label::after {
+    font-size: 1.5em !important;
+    right: 0.8em !important;
+    top: 50% !important;
+    transform: translateY(-50%) !important; /* 縦中央に固定 */
+  }
+
+  .cp_qa .cp_actab .cp_actab-content p {
+    font-size: 3.2vw !important;
+    word-break: break-word; /* 回答テキストも折り返し */
+  }
+}
 
 
 
@@ -1073,14 +1103,14 @@ h4:before{
     flex-direction: column;        // 上から下に積む
     align-items: flex-end;         // 右揃え
     justify-content: flex-start;
-    width: auto;                   // 幅制限を解除
-    max-width: none;               // 幅制限解除
+    width: auto;
+    max-width: none;
     padding: 60px 60px 0 0;
     box-sizing: border-box;
 
     .overlayer {
       display: inline-block;
-      max-width: 600px;            // 文字幅制限
+      max-width: 600px;
       font-size: 30px;
       font-weight: bold;
       color: #444;
@@ -1091,12 +1121,12 @@ h4:before{
     }
 
     .image-block {
-      display: flex;               // 横並び
-      flex-direction: row;         // 横方向
-      align-items: center;         // 高さ揃え
-      justify-content: flex-start; // 文字幅に合わせて左から横並び
-      max-width: 600px;            // 文字幅に合わせる
-      margin-top: 20px;            // 文字下の余白
+      display: flex;
+      flex-direction: row;         
+      align-items: center;         
+      justify-content: flex-start; 
+      max-width: 600px;
+      margin-top: 20px;
 
       .btn-brown {
         background-color: #8B4513;
@@ -1106,7 +1136,7 @@ h4:before{
         font-size: 16px;
         border-radius: 8px;
         text-decoration: none;
-        margin-right: 16px;       // ボタンと画像の間隔
+        margin-right: 16px;
 
         &:hover {
           background-color: #5a2e0d;
@@ -1114,10 +1144,15 @@ h4:before{
       }
 
       img {
-        width: 250px !important;   // PCでも確実に大きく
+        width: 250px !important;
         height: auto !important;
       }
     }
+  }
+
+  // スマホ専用画像はPC時は非表示
+  .phone-image {
+    display: none;
   }
 }
 
@@ -1125,76 +1160,30 @@ h4:before{
   .section.ai-wrapper {
     position: relative;
     width: 100%;
-    background: url('mobile.png') no-repeat top center;
-    background-size: 115% auto;
-    padding-top: 73.4%;  
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start; // 中央寄せを解除
-    align-items: center;
+    height: auto;
+    background: none !important;   // PC用の背景画像は消す
+    padding: 0;
+    display: block;                // シンプルにブロック表示
 
-    &::before {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-color: rgba(255,255,255,0.5);
-      pointer-events: none;
+    // PC用の文字・ボタンは非表示
+    .contents {
+      display: none !important;
     }
 
-    .contents {
-      position: absolute;
-      top: 0;
-      left: 0;
+    // スマホ専用画像だけ表示
+    .phone-image {
+      display: block;
       width: 100%;
-      height: 100%;
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-start; // 上寄せ
-      align-items: center;
-      padding: 20px;
-      margin-top:45px;
-      text-align: center;
 
-      .overlayer {
-        max-width: 90%;
-        font-size: 19px!important;
-        line-height: 3.5!important;
-        font-weight: 600;
-        text-align:center;
-        color: #333;
-        margin-bottom: 16px;
-      }
-
-      .image-block {
-        display: flex;
-        margin-top:50px;
-        flex-direction: column;
-        align-items: center;
-        z-index: 1;
-
-        .button-wrapper {
-          order: 2;  // ボタン下
-          margin-top: 16px;
-        }
-
-        .image-wrapper {
-          order: 1;  // 画像上
-          width: 100%;
-
-          img {
-            width: 100%;  // 幅100%
-            max-width: none;
-            height: auto;
-          }
-          
-        }
+      img {
+        width: 100%;
+        height: auto;
+        display: block;
       }
     }
   }
 }
+
 
 
 .plan-slider {
@@ -1254,9 +1243,12 @@ h4:before{
   }
 }
 
-.section.row .col-sm-12.center a.btn-brown {
-  background-color: #8B4513 !important;
+.row .col-sm-12.center a.btn-brown {
+  background-color: #673009 !important;
   color: #fff !important;
+  width:95% !important;
+  padding:15px !important;
+  font-size:21px;
 }
 
 
@@ -1375,4 +1367,152 @@ table.company td textarea {
   font-size: 14px;
   padding: 5px;
   border-radius: 6px; /* 角丸 */
+}
+
+
+.top-wrapper {
+  padding: 40px 20px;
+  text-align: center;
+
+  h2.heading {
+    font-size: 2rem;
+    color: #666;
+    margin-bottom: 30px;
+
+    strong {
+      color: #333;
+      font-weight: bold;
+      text-decoration: underline;
+    }
+  }
+}
+
+/* カードは section とは独立した要素 */
+.plan-card {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  padding: 20px;
+  max-width: 800px;
+  margin: 20px auto;
+
+  .plan-text {
+    text-align: left;
+
+    h3 {
+      font-size: 1.5rem;
+      color: #444;
+      margin-bottom: 15px;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+
+      li {
+        font-size: 1rem;
+        color: #555;
+        margin: 6px 0;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+
+        &::before {
+          content: "✔";
+          color: #8B4513;
+        }
+      }
+    }
+  }
+
+  .block-image {
+    max-width: 200px;
+    height: auto;
+  }
+
+  @media screen and (max-width: 768px) {
+    flex-direction: column;
+    text-align: center;
+
+    .block-image {
+    margin-top: 20px;
+    max-width: 100%;
+    margin-left: auto;
+    margin-right: auto; // 画像は中央寄せ
+    }
+
+    .plan-text {
+    width: 80%;       // ← これを追加
+    text-align: left;  // 文字は左寄せ
+    ul li {
+      justify-content: flex-start;
+      }
+    }
+  }
+}
+
+
+
+
+
+
+
+/* チェックリスト */
+.check-list {
+  list-style: none;
+  padding: 0;
+  margin-top: 1rem;
+
+  li {
+    position: relative;
+    padding-left: 2.5rem;   // チェックマーク分のスペース
+    margin-bottom: 1rem;
+    font-weight: 500;
+    color: $main_color;
+    font-weight:bold;
+    font-size: 1.4rem;      // 少し大きめ
+
+    &:before {
+      content: "✔︎";
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 2rem;           // 大きめ
+      height: 2rem;
+      display: flex;
+      align-items: center;
+      font-weight:bold;
+      justify-content: center;
+      font-size: 1.2rem;
+      color: gray;        // グレー
+      background-color: transparent; // 背景なし
+      border-radius: 50%;
+    }
+  }
+}
+
+/* ボタン */
+.brown-button {
+  display: inline-block;       // 中央寄せ用
+  text-align: center;
+  background-color: $main_color;
+  color: #fff;
+  font-weight: bold;
+  border-radius: 8px;
+  width: 100%;
+  padding: 18px;
+  font-size:18px;
+  text-decoration: none;       // 下線消す
+}
+
+/* レスポンシブ：スマホでは幅100% */
+@media (max-width: 767px) {
+  .brown-button {
+    display: block;
+    width: 100%;
+  }
 }

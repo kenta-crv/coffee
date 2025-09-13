@@ -7,38 +7,8 @@ html
         .col-xs-3
            = link_to "/"
             =image_tag "rogo.webp", class:"header-image"
-        .col-xs-7
-         
+        .col-xs-7  
         .col-xs-2
-
-      .navi
-       - if admin_signed_in? && current_page?(estimates_path)
-         .row
-           .col-sm-1
-           .col-sm-2
-             = link_to  '新品・中古自販機', '/sfa' , class: "col-md"
-           .col-sm-2
-             = link_to  'シェアサイクル', '/share' , class: "col-md"
-           .col-sm-2 
-             = link_to  'メーカー提案中',"/manufacturer" , :class=>"col-md"
-           .col-sm-2 
-             = link_to  'クライアント一覧',"/estimates/info" , :class=>"col-md"
-           .col-sm-2 
-             = link_to  'FAQ',"/questions" , :class=>"col-md"
-           .col-sm-1
-       -else
-        .bread
-          = render_breadcrumbs separator: ' > '
-        .col-xs-12.center
-          p.notice.alert
-           = alert
-           = notice
-
-
-        nav.globalMenuSp
-          ul
-           li
-
 
 
 

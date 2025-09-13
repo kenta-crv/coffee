@@ -5,19 +5,39 @@
     .overlayer
       | オフィスで手軽にコーヒーを
       br/
-      | 福利厚生・収益型と多彩な対応
+      | 企業負担０円で手軽に導入
       br/
-      | 月額無料『オフィスコーヒー』
+      | 『Coffice』
     .image-block
       .button-wrapper
         = link_to "無料で設置を申し込む", "/estimates/new", class:"btn btn-brown mt-3"
       .image-wrapper
         = image_tag "underground.webp"
 
+  / スマホ専用画像
+  .phone-image
+    = image_tag "top-phone.webp"
+
+/# inquiry image
+.section.row
+  .col-sm-12
+    .row.align-items-center
+      / 左カラム（テキスト）
+      .col-md-6.order-1.order-md-1
+        = link_to "無料で設置を申し込む", "/estimates/new", class:"brown-button"
+        ul.check-list
+          li 1日3.5杯からのご利用OK
+          li 企業様負担０円で安心
+          li 収益性や福利厚生相談OK
+
+      / 右カラム（画像）
+      .col-md-6.order-2.order-md-2.text-center
+        = image_tag "underground.webp", class:"img-fluid"
+
 .section.top-wrapper
  h2.heading
     strong
-      | ご利用いただけるコーヒー機種一覧
+      | コーヒー機種一覧
  .procedure-slider
   .plan-slider
     .plan-card
@@ -41,14 +61,31 @@
       .text 福利厚生ではなく、課金購入型のコーヒーマシン。企業様の負担なく収益も確保できます。
 
 
+/# inquiry image
+.section.row
+  .col-sm-12
+    .row.align-items-center
+      / 左カラム（テキスト）
+      .col-md-6.order-1.order-md-1
+        = link_to "無料で設置を申し込む", "/estimates/new", class:"brown-button"
+        ul.check-list
+          li 1日3.5杯からのご利用OK
+          li 企業様負担０円で安心
+          li 収益性や福利厚生相談OK
+
+      / 右カラム（画像）
+      .col-md-6.order-2.order-md-2.text-center
+        = image_tag "underground.webp", class:"img-fluid"
+
+
 .section.odd
   .container
     .row
       .col.text-col
         .number 01
         .text-block
-          h2 初期費用・月額費用無料
-          p 『オフィスコーヒー』をご利用いただく際、コーヒーの機器は月額利用費無料で当社より貸し出しをさせていただいております。
+          h2 1杯購入型だから企業様負担は０円
+          p オフィスコーヒー『Coffice』は、初期費用・月額費用無料で手軽にご利用いただくことができます。
       .col.image-col
         = image_tag 'top-image1.webp', class: 'center entire-image'
 
@@ -60,8 +97,8 @@
       .col.text-col
         .number 02
         .text-block
-          h2 変更可能な定期配送
-          p コーヒーを飲むために必要なコーヒー豆や備品は当社から定期的に配送をさせていただくので誰でも気軽にご利用いただけます。（乳製品のみ対象外）
+          h2 飲料に必要な一式は定期配送
+          p コーヒーを飲むために必要なコーヒー豆や備品は当社から定期的に配送をさせて頂きます。そのため（乳製品のみ対象外）
 
 .section.odd
   .container
@@ -69,55 +106,73 @@
       .col.text-col
         .number 03
         .text-block
-          h2 リーズナブルにコーヒーを楽しめる
-          p 『オフィスコーヒー』なら本格コーヒーを1杯135円とリーズナブルに楽しんでいただけるのでコスト面でもご安心いただけます。
+          h2 カスタマイズで収益性確保もOK
+          p 当社にて事前に定価を決定しておりますので、企業様で販売価格を調整していただくことも可能です。
       .col.image-col
         = image_tag 'top-image3.webp', class: 'center entire-image'
+
+.section.even
+  .container
+    .row
+      .col.image-col
+        = image_tag 'top-image4.webp', class: 'center entire-image'
+      .col.text-col
+        .number 04
+        .text-block
+          h2 福利厚生で従業員様のやる気UP
+          p オフィスにコーヒーを設置するだけで、手軽に低価格な本格コーヒーを楽しむことができるので、従業員様のモチベーションや集中力UPに繋がります。
+
+.section.odd
+  .container
+    .row
+      .col.text-col
+        .number 05
+        .text-block
+          h2 小規模企業様に嬉しい『1日3杯〜』
+          p オフィスコーヒー『Coffice』は、1日の最低ご利用杯数が非常に少ないので、小規模企業様でも手軽にご利用いただくことができます。
+      .col.image-col
+        = image_tag 'top-image5.webp', class: 'center entire-image'
+
+
+/# inquiry image
+.section.row
+  .col-sm-12
+    .row.align-items-center
+      / 左カラム（テキスト）
+      .col-md-6.order-1.order-md-1
+        = link_to "無料で設置を申し込む", "/estimates/new", class:"brown-button"
+        ul.check-list
+          li 1日3.5杯からのご利用OK
+          li 企業様負担０円で安心
+          li 収益性や福利厚生相談OK
+
+      / 右カラム（画像）
+      .col-md-6.order-2.order-md-2.text-center
+        = image_tag "underground.webp", class:"img-fluid"
+
 
 .section.top-wrapper
  h2.heading
     strong
       | 料金案内
- .plan-slider
+ .single-plan
   .plan-card
-    h3 福利厚生プラン
+    .plan-text
+      ul
+        li 初期費用: 0円
+        li 月額料金: 0円
+        li 定期配送: 0円
+        li 購入方法: 電子決済
+        li 1杯料金: 要問い合わせ
     = image_tag "payment1.webp", class: 'block-image'
-    ul
-      li 月額料金: 0円
-      li 定期配送: 30,000円(毎月1回)
-      li 購入方法: 無料利用可能  
-      li 1杯料金: 1杯135円〜
-      li 契約期間: 2年
-
-  .plan-card
-    h3 クレジット収益型プラン
-    = image_tag "payment2.webp", class: 'block-image'
-    ul
-      li 月額料金: 0円
-      li 定期配送: 30,000円(毎月1回)
-      li 利用方法: クレジットカード
-      li 1杯料金: 1杯250円
-      li 契約期間: 2年
-
-  .plan-card
-    h3 現金収益型プラン
-    = image_tag "payment3.webp", class: 'block-image'
-    ul
-      li 月額料金: 0円
-      li 定期配送: 30,000円(毎月1回)
-      li 利用方法: 現金
-      li 1杯料金: 自由設定
-      li 契約期間: 2年
 
 
 
 .section.top-wrapper
  h2.heading
     strong
-      | 『Office Coffee』
+      | 『Coffice』
     | のよくある質問
- br/
- br/
  .cp_qa
   .cp_actab.left
     input#cp_tabfour028[type="checkbox" name="tabs"]
@@ -154,15 +209,35 @@
   .cp_actab.left
     input#cp_tabfour035[type="checkbox" name="tabs"]
     label[for="cp_tabfour035"]
-      h4 支払い方法は？
+      h4 コーヒーの購入方法は？
     .cp_actab-content
       p
-        | 毎月のお支払いはクレジットカードもしくは口座振替にて対応させていただいております。
+        | 毎月のお支払いはクレジットカードもしくはQR決済にて対応させていただいております。
+
+
+
+/# inquiry image
+.section.row
+  .col-sm-12
+    .row.align-items-center
+      / 左カラム（テキスト）
+      .col-md-6.order-1.order-md-1
+        = link_to "無料で設置を申し込む", "/estimates/new", class:"brown-button"
+        ul.check-list
+          li 1日3.5杯からのご利用OK
+          li 企業様負担０円で安心
+          li 収益性や福利厚生相談OK
+
+      / 右カラム（画像）
+      .col-md-6.order-2.order-md-2.text-center
+        = image_tag "underground.webp", class:"img-fluid"
+
+
 
 .section.top-wrapper
  h2.heading
     strong
-      | 『Office Coffee』
+      | 『Coffice』
     | のご利用レビュー
 
  .review-slider
@@ -186,7 +261,7 @@
 .section.top-wrapper
  h2.heading
     strong
-      | 『オフィスコーヒー』
+      | 『Coffice』
     | 導入フロー
  br/
  ul.flow.center
@@ -222,8 +297,19 @@
         | 不明点があれば、お気軽にお問い合わせくださいませ。
 
 
-
 /# inquiry image
 .section.row
-  .col-sm-12.center
-    = link_to "無料で設置を申し込む", "/estimates/new", class:"btn btn-brown mt-3"
+  .col-sm-12
+    .row.align-items-center
+      / 左カラム（テキスト）
+      .col-md-6.order-1.order-md-1
+        = link_to "無料で設置を申し込む", "/estimates/new", class:"brown-button"
+        ul.check-list
+          li 1日3.5杯からのご利用OK
+          li 企業様負担０円で安心
+          li 収益性や福利厚生相談OK
+
+      / 右カラム（画像）
+      .col-md-6.order-2.order-md-2.text-center
+        = image_tag "underground.webp", class:"img-fluid"
+

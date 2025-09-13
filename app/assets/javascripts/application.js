@@ -47,3 +47,17 @@ document.querySelectorAll('td.hoverable').forEach(function(element) {
     }
   });
 });
+
+
+document.addEventListener("DOMContentLoaded", function () {
+  if (window.innerWidth <= 768) {
+    const header = document.querySelector("header");
+
+    // 「次のフェーズに移行した」タイミングで呼び出してください
+    window.showHeaderAfterPhase = function () {
+      if (header) {
+        header.classList.add("visible");
+      }
+    };
+  }
+});
