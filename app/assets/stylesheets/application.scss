@@ -59,8 +59,12 @@ header {
       font-weight: bold;
     }
   }
-
-
+}
+/* スマホでは非表示 */
+@media screen and (max-width: 768px) {
+  .navi {
+    display: none;
+  }
 }
 
 body {
@@ -1185,7 +1189,6 @@ h4:before{
 }
 
 
-
 .plan-slider {
   display: flex;
   gap: 16px;
@@ -1196,7 +1199,7 @@ h4:before{
 }
 
 .plan-slider::-webkit-scrollbar {
-  display: none; /* スクロールバー非表示 */
+  display: none;
 }
 
 .plan-card {
@@ -1208,76 +1211,49 @@ h4:before{
   scroll-snap-align: center;
   box-shadow: 0 4px 12px rgba(0,0,0,0.1);
 
-  height: auto;
   display: flex;
-  flex-direction: column;
+  flex-direction: column; /* カード内を縦列 */
   justify-content: flex-start;
+  align-items: center;
+  height: auto;
 }
 
 .plan-card h3 {
-  font-weight: bold !important;
-  margin-bottom: 12px !important;
-  text-align: center !important;
+  font-weight:bold;
 }
 
-.plan-card p {
-  font-weight: bold;
-  margin-bottom: 12px;
-  text-align: center;
-}
-
-.plan-card .block-image {
-  width: 80%;
-  border-radius: 8px;
-  margin-bottom: 12px;
-}
-
-.plan-card .text {
-  font-size: 0.95rem;
-  line-height: 1.5;
-}
-
-@media (max-width: 768px) {
+/* スマホ横スクロールはそのまま */
+@media screen and (max-width: 991px) {
   .plan-card {
-    flex: 0 0 70%; /* スマホで2枚くらい見える */
+    flex: 0 0 70%;
   }
 }
 
-.row .col-sm-12.center a.btn-brown {
-  background-color: #673009 !important;
-  color: #fff !important;
-  width:95% !important;
-  padding:15px !important;
-  font-size:21px;
-}
+/* PCも横スクロールさせつつカード内縦列 */
+@media screen and (min-width: 992px) {
+  .plan-card {
+    flex: 0 0 300px; /* 横幅固定でスライダーとして横に並ぶ */
+    max-width: 300px;
+    min-height: 400px;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: flex-start !important;
+    align-items: center !important;
+  }
 
+  .plan-card .block-image {
+    width: 100% !important;
+    max-width: 250px !important;
+    margin-bottom: 12px !important;
+  }
 
-.plan-card ul {
-  list-style: none;         /* デフォルトの黒点を消す */
-  padding: 0;
-  margin: 0;
-}
-
-.plan-card ul li {
-  font-size: 0.95rem;
-  color: #333;
-  padding: 8px 0;
-  border-bottom: 1px solid #eee;   /* 区切り線でシンプルに */
-  display: flex;
-  margin-left:40px;
-  align-items: center;
-  gap: 8px;
-}
-
-.plan-card ul li:last-child {
-  border-bottom: none;      /* 最後だけ線を消す */
-}
-
-/* おしゃれなチェックアイコン風 */
-.plan-card ul li::before {
-  content: "✔";            /* または "・" などに変更可 */
-  color: #8B4513;           /* コーヒーっぽいブラウン */
-  font-size: 0.9rem;
+  .plan-card h3{
+    font-weight:bold;
+  }
+  .plan-card p,
+  .plan-card .text {
+    text-align: center !important;
+  }
 }
 
 
@@ -1514,5 +1490,139 @@ table.company td textarea {
   .brown-button {
     display: block;
     width: 100%;
+  }
+}
+
+
+
+
+
+
+/* モダンな料金リスト */
+ul.modern-list {
+  list-style: none;   /* デフォルトの「・」を消す */
+  padding: 0;
+  margin: 1rem 0;
+  max-width: 400px;
+}
+
+ul.modern-list li {
+  background: #f9fafb;
+  margin-bottom: 0.6rem;
+  padding: 0.8rem 1rem;
+  border-radius: 12px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.06);
+  font-size: 1rem;
+  font-weight: 500;
+  color: #374151;
+  display: flex;
+  align-items: center;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+ul.modern-list li::before {
+  content: "";
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  margin-right: 10px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, $main_color, $main_color); /* 青→緑のグラデ */
+}
+
+ul.modern-list li:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.12);
+}
+
+@media screen and (max-width: 768px) {
+  .col.image-col-price {
+    display: none !important;
+  }
+}
+
+
+/* PC画面だけ適用 */
+@media screen and (min-width: 1024px) {
+  /* row全体を flex でボタンだけ中央に */
+  .pc-only-button {
+    display: flex !important;
+    justify-content: center;
+    align-items: center;
+  }
+
+  /* 左カラム内の ul を完全非表示 */
+  .pc-only-button .inquiry-left ul.check-list {
+    display: none !important;
+  }
+
+  /* 右カラムを完全に消す */
+  .pc-only-button .inquiry-right {
+    display: none !important;
+    flex: 0 0 0;
+    max-width: 0;
+    overflow: hidden;
+  }
+
+  /* 左カラムを中央に寄せてボタンだけ表示 */
+  .pc-only-button .inquiry-left {
+    flex: 1 1 auto;  /* 横幅いっぱい */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  /* ボタンスタイル */
+  .pc-only-button .special-btn {
+    width: 60%;
+    font-size: 28px;
+    font-weight: bold;
+    padding: 20px;
+    text-align: center;
+  }
+}
+
+/* スマホは従来通り */
+@media screen and (max-width: 1023px) {
+  .pc-only-button {
+    display: block !important;
+  }
+}
+
+
+@media screen and (min-width: 1024px) {
+  /* 右カラムを完全に消す */
+  .inquiry-right {
+    display: none !important;
+    flex: 0 0 0 !important;
+    max-width: 0 !important;
+    overflow: hidden !important;
+  }
+
+  /* 左カラムの ul を非表示 */
+  .inquiry-left ul.check-list {
+    display: none !important;
+  }
+
+  /* 左カラムを flex にしてボタン中央寄せ */
+  .inquiry-left {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    width: 100% !important;
+  }
+
+  /* ボタンを大きく */
+  .inquiry-left .special-btn {
+    width: 60% !important;
+    font-size: 28px !important;
+    font-weight: bold !important;
+    padding: 20px !important;
+    text-align: center !important;
+  }
+
+  /* row に余計な justify-content がある場合はリセット */
+  .row.align-items-center {
+    justify-content: unset !important;
   }
 }
